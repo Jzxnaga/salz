@@ -1,0 +1,59 @@
+DataPemohon
+	Nama Lengkap		: Suhadi Wibowo
+	Nama STNK		: Suhadi Wibowo	
+	Alamat Tertanggung	: Jl. T. B. Simatupang No. 45
+	Alamat Survey		: Jl. Pluit Kencana No.37
+	Email			: Suhadiwibowo@gmail.com
+Data Kendaraan
+	Tahun Pembuatan		: 2014
+	Merk Kendaraan		: Toyota
+	Tipe Kendaraan		: Avanza
+	Model Kendaraan		: ALL NEW 1.3 G A/T LUXURY
+	No. Polisi		: B6543UKT
+	No. Rangka		: MHYKZE81SCJ115045
+	No. Mesin		: KMMMCA26Y1BH306951
+	Warna Kendaraan		: SILVER
+	Jarak Tempuh		: 8546 KM
+	Aksesoris		: -
+	Penggunaan		: PRIBADI
+	Mesin Hidup/Mati	: HIDUP
+
+DataPemohon
+	Nama Lengkap		: Gatot Subiantoro
+	Nama STNK		: Gatot Subiantoro
+	Alamat Tertanggung	: Jl. A. Yani, gg. 3 No. 18
+	Alamat Survey		: Jl. A. Yani, gg. 3 No. 18
+	Email			: GSUBIANTORO0@YAHOO.COM
+Data Kendaraan
+	Tahun Pembuatan		: 2017
+	Merk Kendaraan		: HONDA
+	Tipe Kendaraan		: ACCORD
+	Model Kendaraan		: ALL NEW 2.4 VTI-L ES A/T
+	No. Polisi		: B1654BKU
+	No. Rangka		: MHYKZE81SCJ116847
+	No. Mesin		: KMMMCA26Y1BH304253
+	Warna Kendaraan		: HITAM
+	Jarak Tempuh		: 9647 KM
+	Aksesoris		: STICKER COATING HIJAU
+	Penggunaan		: PRIBADI
+	Mesin Hidup/Mati	: HIDUP
+
+DataPemohon
+	Nama Lengkap		: Agus Suhendra
+	Nama STNK		: Agus Suhendra
+	Alamat Tertanggung	: Jl. Teuku Umar No. 27
+	Alamat Survey		: Jl. Pluit Kencana No.37
+	Email			: Agus_suhendra@gmail.com
+Data Kendaraan
+	Tahun Pembuatan		: 2019
+	Merk Kendaraan		: DAIHATSU
+	Tipe Kendaraan		: SIGRA
+	Model Kendaraan		: 1.2 R A/T DLX 110TH EDITION
+	No. Polisi		: B6589TSI
+	No. Rangka		: MHYKZE81SCJ113697
+	No. Mesin		: KMMMCA26Y1BH307467
+	Warna Kendaraan		: KUNING
+	Jarak Tempuh		: 3456
+	Aksesoris		: Roof Rail, Spoiler
+	Penggunaan		: PUBLIC SERVICE
+	Mesin Hidup/Mati	: HIDUP
