@@ -23,7 +23,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Store from './store'
 import LoginPage from './screens/LoginPage'
 import HomePage from './screens/HomePage'
-
+import HomePageList from './screen-component/HomePageList'
+import PageInputKendaraan from './screen-component/PageInputKendaraan'
+// import PageInputPelangaan from './screen-component/PageInputPelangaan'
 //screen
 
 
@@ -73,6 +75,7 @@ export default function App() {
               ),
                 headerTitleStyle: { flex: 1, textAlign: 'center' },
                 headerStyle: {
+                  height:Dimensions.get('window').height*0.11,
                   backgroundColor: Theme.colorTopTab.color,
               },
                 headerTintColor: '#fff',
@@ -81,7 +84,7 @@ export default function App() {
 
             <Stack.Screen name="BottomTabNavigator1" component={BottomTabNavigator1}
               options={{
-              headerShown: false,
+              headerShown: true,
               headerTitle:(props)=>(
                 <Image
                 style={styles.logo}
@@ -91,11 +94,30 @@ export default function App() {
               ),
                 headerTitleStyle: { flex: 1, textAlign: 'center' },
                 headerStyle: {
-                backgroundColor: Theme.colorTopTab.color,
+                  height:Dimensions.get('window').height*0.115,
+                  backgroundColor: Theme.colorTopTab.color,
               },
                 headerTintColor: '#fff',
               }}
             />
+            
+            <Stack.Screen name="PageInputKendaraan" component={PageInputKendaraan} 
+              options={{
+              headerShown: true,
+              headerTitle:(props)=>(
+                <TouchableHighlight onPress={() => onPressLogo()}>
+                  <Text> Input Kendaraan </Text>
+                </TouchableHighlight>
+              ),
+                headerTitleStyle: { flex: 1, textAlign: 'center' },
+                headerStyle: {
+                  backgroundColor: '#fff',
+                }
+              
+              }}
+            />
+
+
           </Stack.Navigator>
           </NavigationContainer>
         </AppearanceProvider>
@@ -108,7 +130,7 @@ export default function App() {
 
 function BottomTabNavigator1() {
   return (
-<Tabs.Navigator
+  <Tabs.Navigator
       screenOptions={{
           tabBarLabel:'test',
           activeTintColor: Theme.iconColorBottomTab.color,
@@ -116,7 +138,7 @@ function BottomTabNavigator1() {
               initialRouteName: 'Home',
               tabStyle:{
                   marginTop:(Platform.OS === 'ios') ? 0 : 0,
-                  height : Dimensions.get('window').height*0.075,
+                  height : Dimensions.get('window').height*0.07,
                   flexDirection: 'row',
                   borderTopLeftRadius:25,
                   borderTopRightRadius:25,
@@ -137,9 +159,9 @@ function BottomTabNavigator1() {
           }
       }
   >
-  <Tabs.Screen initialRouteName="Home" name="HomePage" component={HomePage}
+  <Tabs.Screen initialRouteName="Home" name="HomeTestName00" component={HomePage}
       options={
-          {   
+          {   headerShown: false,
               tabBarLabel:"Home",
               tabBarIcon: ({ focused, color, size }) => (
                   <Icon
@@ -152,9 +174,10 @@ function BottomTabNavigator1() {
 
           }
       }/>
-  <Tabs.Screen initialRouteName="SurveyList" name="SurveyList" component={HomePage}
+  <Tabs.Screen initialRouteName="SurveyList" name="SurveyTestName00" component={HomePageList}
       options={
           {   
+              headerShown: false,
               tabBarLabel:"Survey List",
               tabBarIcon: ({ focused, color, size }) => (
                   <Feather

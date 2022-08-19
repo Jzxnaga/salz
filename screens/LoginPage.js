@@ -18,6 +18,14 @@ import * as Google from 'expo-google-app-auth';
 import { LinearGradient } from "expo-linear-gradient";
 import axios from 'axios';
 
+//google sign in
+// import {
+// 	GoogleSignin,
+// 	GoogleSigninButton,
+// 	statusCodes,
+//   } from '@react-native-google-signin/google-signin';
+  
+
 const Theme = require('../hooks/Theme01.js')
 
 
@@ -33,11 +41,11 @@ export default function LoginScreen({navigation}) {
 	const [userGoogleInfo,setUserGoogleInfo]=useState({});
 	const [loaded,setLoaded]=useState(false)
 	const [username,setUsername] = useState('');
-  	const [password,setPassword] = useState('');
+  const [password,setPassword] = useState('');
 
-  	const statusLogin = useSelector ( state => state.page.statusLogin )
+  const statusLogin = useSelector ( state => state.page.statusLogin )
 
-  	let loginInfo = []
+  let loginInfo = []
 
 	const onChangeUsername = (e) =>{
 		setUsername(e.nativeEvent.text)
@@ -55,6 +63,10 @@ export default function LoginScreen({navigation}) {
 		// , {credential:'test'}
 		);
 	}
+
+  const googleSignIn = () => {
+    console.log('google sign in')
+  }
 
 return (
 	<View style = {styles.container} >
@@ -78,14 +90,14 @@ return (
 
 			<View style  = {styles.containerLoginInfoUnamePassword}>
 				<TextInput 
-		            style={styles.logininputUsername}
-		            value={username}
-		            onChange={onChangeUsername}
-		            textContentType='username'
-		            autoCapitalize='none'
-		            placeholder='username'
-		        >
-		        </TextInput>
+          style={styles.logininputUsername}
+          value={username}
+          onChange={onChangeUsername}
+          textContentType='username'
+          autoCapitalize='none'
+          placeholder='username'
+        >
+        </TextInput>
 
 				<TextInput 
 					style={styles.logininputPassword}
@@ -94,15 +106,21 @@ return (
 					secureTextEntry={true}
 					autoCapitalize='none'
 					placeholder='password'
-		        >
-		        </TextInput>
+		    >
+		    </TextInput>
 
 				<TouchableOpacity style={[styles.loginButton,Theme.shadow99]}
-				    onPress={()=>onPressLogin()}
-				    >
-				    <Text  style={[{color:'white' , fontWeight: 'bold'},Theme.fontSize24]}> Login </Text>
+	        onPress={()=>onPressLogin()}>
+				  <Text  style={[{color:'white' , fontWeight: 'bold'},Theme.fontSize24]}> Login </Text>
 				</TouchableOpacity>
 
+				{/* <GoogleSigninButton
+					style={{ width: 192, height: 48 }}
+					size={GoogleSigninButton.Size.Wide}
+					color={GoogleSigninButton.Color.Dark}
+					onPress={()=>googleSignIn()}
+					disabled={isSigninInProgress}
+				/>; */}
 
 			</View>
 		</View>
@@ -112,117 +130,117 @@ return (
 
 const styles = StyleSheet.create({
 container: {
-	  width:Dimensions.get('window').width*1,
-		height:Dimensions.get('window').height*1.1,
-    	backgroundColor: 'white',
-    	justifyContent: 'center',
-        alignItems: 'center',
-        // flex: 1,
-		// justifyContent: "center",
-		// alignItems: "center"
-  	},
+    width:Dimensions.get('window').width*1,
+    height:Dimensions.get('window').height*1.1,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    // flex: 1,
+    // justifyContent: "center",
+    // alignItems: "center"
+  },
 
-  	stretch: {
-  		backgroundColor:'transparent',
-	    width:Dimensions.get('window').width*1,
-	    resizeMode: 'stretch',
-  	},
+  stretch: {
+    backgroundColor:'transparent',
+    width:Dimensions.get('window').width*1,
+    resizeMode: 'stretch',
+  },
 
-  	containerLoginInfo:{
-  		width:'80%',
-  		height:'80%',
-  		backgroundColor: 'transparent',
-  		top:-Dimensions.get('window').height*0.4,
+  containerLoginInfo:{
+    width:'80%',
+    height:'80%',
+    backgroundColor: 'transparent',
+    top:-Dimensions.get('window').height*0.4,
 
-  	},
+  },
 
-  	containerLoginInfo1:{
-		width:'100%',
-  		height:'90%',
-  		top:Dimensions.get('window').height*0.45,
-  	},
-  	containerLoginInfoLogo:{
-  		flex:1,
-  		backgroundColor:'transparent',
-  		justifyContent:'center',
-  		alignItems:'center'
-  	},
+  containerLoginInfo1:{
+  width:'100%',
+    height:'90%',
+    top:Dimensions.get('window').height*0.45,
+  },
+  containerLoginInfoLogo:{
+    flex:1,
+    backgroundColor:'transparent',
+    justifyContent:'center',
+    alignItems:'center'
+  },
 
-  	containerLoginInfoUnamePassword:{
-  		flex:3,
-  		backgroundColor:'transparent',
-  		alignItems:'center'
-  	},
+  containerLoginInfoUnamePassword:{
+    flex:3,
+    backgroundColor:'transparent',
+    alignItems:'center'
+  },
 
 	imageLogo:{
 
 	},
 
-  	logininputUsername:{
-	    marginTop: '8%',
-	    width:'90%',
-	    borderBottomWidth: 1,
-	    alignItems: "center",
-	    justifyContent: "center",
-	    backgroundColor: "transparent",
-	    borderColor: "#333",
-	    color: "rgb(255,255,255)",
-	    textAlign: "center",
-	    textAlignVertical: "center",
-	    fontWeight: "bold",
-	    opacity:1,
-	    fontSize:22,
-	    padding:'1.2%',
+  logininputUsername:{
+    marginTop: '8%',
+    width:'90%',
+    borderBottomWidth: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "transparent",
+    borderColor: "#333",
+    color: "rgb(255,255,255)",
+    textAlign: "center",
+    textAlignVertical: "center",
+    fontWeight: "bold",
+    opacity:1,
+    fontSize:22,
+    padding:'1.2%',
 	},
 
 	logininputPassword:{
-	    marginTop: '2%',
-	    width:'90%',
-	    borderBottomWidth: 1,
-	    alignItems: "center",
-	    justifyContent: "center",
-	    backgroundColor: "transparent",
-	    borderColor: "#333",
-	    color: "rgb(255,255,255)",
-	    textAlign: "center",
-	    textAlignVertical: "center",
-	    fontWeight: "bold",
-	    opacity:1,
-	    fontSize:22,
-	    padding:'1.2%'
+    marginTop: '2%',
+    width:'90%',
+    borderBottomWidth: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "transparent",
+    borderColor: "#333",
+    color: "rgb(255,255,255)",
+    textAlign: "center",
+    textAlignVertical: "center",
+    fontWeight: "bold",
+    opacity:1,
+    fontSize:22,
+    padding:'1.2%'
 	},
 
-  	loginButton: {
-	    marginTop: '9%',
-	    width:'90%',
-	    borderWidth: 0,
-	    alignItems: "center",
-	    justifyContent: "center",
-	    backgroundColor: 'rgba(69, 140, 200,1)',
-	    borderRadius: 5,
-	    borderColor: "#333",
-	    color: "#333",
-	    textAlign: "center",
-	    textAlignVertical: "center",
-	    fontWeight: "bold",
-	    fontSize:22,
-	    padding:'3.2%'
+  loginButton: {
+    marginTop: '9%',
+    width:'90%',
+    borderWidth: 0,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: 'rgba(69, 140, 200,1)',
+    borderRadius: 5,
+    borderColor: "#333",
+    color: "#333",
+    textAlign: "center",
+    textAlignVertical: "center",
+    fontWeight: "bold",
+    fontSize:22,
+    padding:'3.2%'
 	},
 
 	loginButtonGoogle: {
-	    marginTop: '5%',
-	    width:'100%',
-	    borderWidth: 0,
-	    alignItems: "center",
-	    justifyContent: "center",
-	    backgroundColor: "red",
-	    borderRadius: 0,
-	    borderColor: "#333",
-	    color: "#333",
-	    textAlign: "center",
-	    textAlignVertical: "center",
-	    fontWeight: "bold",
-	    opacity:0.4,
-	    padding:'1.2%'
+    marginTop: '5%',
+    width:'100%',
+    borderWidth: 0,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "red",
+    borderRadius: 0,
+    borderColor: "#333",
+    color: "#333",
+    textAlign: "center",
+    textAlignVertical: "center",
+    fontWeight: "bold",
+    opacity:0.4,
+    padding:'1.2%'
 	},
 })

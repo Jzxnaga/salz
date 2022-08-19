@@ -126,7 +126,7 @@ module.exports = StyleSheet.create({
 	},
 
 	colorTopTab:{
-		color:'rgba(70,70,140,1)'
+		color:'#00afef'
 	},
 
 	iconColorBottomTab:{

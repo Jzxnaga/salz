@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 const axios = require('axios').default;
+const apiAddress = 'http://localhost:4000';
 
 export const customerCreate = createAsyncThunk(
   '/api/customer/register',
@@ -9,7 +10,7 @@ export const customerCreate = createAsyncThunk(
     const { auth } = getState()
     const token = auth.token
     try {
-      const result = await axios.post('http://localhost:4000/api/customer/register',body)
+      const result = await axios.post(`${apiAddress}/api/customer/register`,body)
       return result.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -24,7 +25,7 @@ export const customerCheck = createAsyncThunk(
     const { auth } = getState()
     const token = auth.token
     try {
-      const result = await axios.post('http://localhost:4000/api/customer/check',body)
+      const result = await axios.post(`${apiAddress}/customer/check`,body)
       return result.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -41,7 +42,7 @@ export const applicationCreate = createAsyncThunk(
     const { auth } = getState()
     const token = auth.token
     try {
-      const result = await axios.post('http://localhost:4000/api/application/create',body)
+      const result = await axios.post(`${apiAddress}/api/application/create`,body)
       return result.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -56,7 +57,7 @@ export const findAssetLessorAsIdManyDb = createAsyncThunk(
     const { auth } = getState()
     const token = auth.token
     try {
-      const result = await axios.post('http://localhost:4000/api/R2/findAssetLessorAsIdManyDb',body)
+      const result = await axios.post(`${apiAddress}/api/R2/findAssetLessorAsIdManyDb`,body)
       return result.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -71,7 +72,7 @@ export const findAssetLessorAsId = createAsyncThunk(
     const { auth } = getState()
     const token = auth.token
     try {
-      const result = await axios.post('http://localhost:4000/api/R2/findAssetLessorAsId',body)
+      const result = await axios.post('${apiAddress}/api/R2/findAssetLessorAsId',body)
       return result.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -86,7 +87,7 @@ export const applicationAddMoreAsset = createAsyncThunk(
     const { auth } = getState()
     const token = auth.token
     try {
-      const result = await axios.post('http://localhost:4000/api/Sec_R2/add',body)
+      const result = await axios.post(`${apiAddress}/api/Sec_R2/add`,body)
       return result.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -101,13 +102,33 @@ export const checkingAppAfterAddMoreAsset = createAsyncThunk(
     const { auth } = getState()
     const token = auth.token
     try {
-      const result = await axios.get('http://localhost:4000/api/application/findOneAppByID',{ params: { id: paramsID } })
+      const result = await axios.get(`${apiAddress}/api/application/findOneAppByID`,{ params: { id: paramsID } })
       return result.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
     }
   }
 )
+
+export const addChat = createAsyncThunk(
+  '/api/chat',
+  async (paramsID, { getState , rejectWithValue }) => {
+    const {assets} = getState()
+    const { auth } = getState()
+    const token = auth.token
+    try {
+      const body = {
+        isiChat : '',
+        time:''
+      }
+      const result = await axios.get(`${apiAddress}/api/chat`, body , { params: { id: paramsID } })
+      return result.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+)
+
 
 const applicationSlice = createSlice({
   name:'posts',
@@ -144,6 +165,9 @@ const applicationSlice = createSlice({
     },
     setIdAgen(state,action){
       state.ID_Agen = action.payload
+    },
+    setStateApplication(state,action){
+      state[action.payload[0]] = action.payload[1]
     }
   },
   extraReducers:{
