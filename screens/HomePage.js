@@ -10,6 +10,7 @@ import HomePageList from '../screen-component/HomePageList'
 import CustomMaterialMenu from '../screen-component/CustomMaterialMenu';
 import PageInputKendaraan from '../screen-component/PageInputKendaraan';
 import PageInputPelanggan from '../screen-component/PageInputPelanggan';
+import SearchListDropdown from '../screen-component/SearchListDropdown';
 
 export default function HomePage({navigation,route}) {
   let dispatch = useDispatch(); 
@@ -34,7 +35,7 @@ export default function HomePage({navigation,route}) {
     Alert.alert(visibleState)
   }
   const changeModalInputState = (pageNumber) =>{
-    // console.log(pageNumber)
+    console.log(pageNumber)
     setModalInputState(pageNumber)
   }
 
@@ -73,16 +74,11 @@ export default function HomePage({navigation,route}) {
       <View style={styles.searchContainer}>
         <Text>Pagi,{} mau isi apa hari ini</Text>
         <View style={styles.searchBody}>
-          <TextInput
-            style={styles.input}
-            onChangeText={onChangeNumber}
-            value={number}
-            placeholder="Useless Placeholder"
-            // keyboardType="numeric"
-          />
-          <Button title='QQ'
+          <SearchListDropdown/>
+          <Pressable
+          style={styles.buttonSearch}
           onPress={() => setModalVisible(true)}
-          ></Button>
+          ><Text>QQQQ</Text></Pressable>
         </View>
       </View>
       {/* Body3 */}
@@ -221,7 +217,7 @@ const styles = StyleSheet.create({
 
   searchBody:{
     margin:'4%',
-    flexDirection:'row'
+    flexDirection:'row',
   },
 
   input: {
@@ -288,13 +284,13 @@ const styles = StyleSheet.create({
 
   //all view modal 
   modalView: {
-    marginVertical:Dimensions.get('window').height*0.070,
+    // marginVertical:Dimensions.get('window').height*0.070,
     width: '100%',
-    height: Dimensions.get('window').height*0.865,
+    height: Dimensions.get('window').height*1,
     borderColor: '#ccc',
     borderStyle: 'solid',
     backgroundColor: 'white',
-    backgroundColor:'rgba(0,0,0,0.7)',
+    backgroundColor:'rgba(0,0,0,0.4)',
     justifyContent:'center',
     alignItems:'center',
   },
@@ -313,6 +309,17 @@ const styles = StyleSheet.create({
     shadowRadius: 16.00,
 
     elevation: 24,
+  },
+  buttonSearch: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width:'15%',
+    borderTopRightRadius: 30,
+    borderBottomRightRadius: 30,
+    backgroundColor: 'white',
+    borderLeftWidth:0,
+    borderWidth:1.5,
+    borderColor:'grey'
   },
   buttonOpen: {
     backgroundColor: '#F194FF',
